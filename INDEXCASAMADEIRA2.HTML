@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mesa Casa Madeira - Awwwards Experience</title>
+
+    <!-- Google Fonts from Design System -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        'wood': {
+                            900: '#7c2d12',
+                            800: '#9a3412',
+                            50: '#fff7ed',
+                        },
+                        'deep-dark': '#050505',
+                        'gray-dark': '#1a1a1a',
+                        'gray-light': '#f9fafb'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Iconify for premium arrows/icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+        .font-manrope { font-family: 'Manrope', sans-serif !important; }
+
+        /* Custom UI Glass Effect clone from design system */
+        .glass-effect {
+            background: rgba(15, 17, 21, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .will-change-transform {
+            will-change: transform, opacity, filter;
+        }
+        
+        /* Lenis CSS Fixes for true smooth scrolling */
+        html.lenis, html.lenis-smooth {
+            height: auto;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-smooth iframe {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-wood-800 selection:text-white text-gray-900">
+
+    <main id="main">
+        <!-- 
+           HERO WRAPPER: margin outer constraint, 
+           hero-box limits inner video bounds via border-radius
+        -->
+        <section id="hero-wrapper" class="relative w-full h-screen p-3 md:p-6 lg:p-8 flex flex-col justify-center items-center overflow-hidden">
+            
+            <div id="hero-box" class="relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-deep-dark shadow-[0_30px_80px_rgba(0,0,0,0.3)] will-change-transform">
+                
+                <!-- OVERLAPPING NAVBAR / Menu Superior (Movido para dentro) -->
+                <div class="absolute top-6 md:top-8 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-3rem)] md:w-full max-w-2xl px-0 md:px-8 flex justify-center hero-fade-out will-change-transform pointer-events-none">
+                    <header class="glass-effect border border-white/10 rounded-full px-2 py-2 w-full flex items-center justify-between shadow-2xl pointer-events-auto transition-transform hover:bg-black/60">
+                        <a href="#" class="flex items-center justify-center bg-white/10 rounded-full p-2 h-10 w-10 shrink-0">
+                            <img src="logo%20casa%20madeira.png" alt="Logo" class="w-6 h-auto brightness-0 invert opacity-90 transition-opacity hover:opacity-100 object-contain">
+                        </a>
+                        
+                        <nav class="hidden md:flex items-center gap-8 text-sm font-sans font-medium text-white/80">
+                            <a href="#hero-wrapper" class="hover:text-white transition-colors">A Obra</a>
+                            <a href="#detalhes" class="hover:text-white transition-colors">Detalhes</a>
+                            <a href="#historia" class="hover:text-white transition-colors">História</a>
+                        </nav>
+                        
+                        <a href="#comprar" class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-sans font-semibold hover:bg-wood-50 transition-colors shrink-0">
+                            Solicitar Reserva
+                        </a>
+                    </header>
+                </div>
+                
+                <!-- Canvas Frame Sequence Scrubbing -->
+                <canvas id="hero-canvas" class="absolute inset-0 w-full h-full object-cover scale-[1.02]"></canvas>
+
+                <!-- Gradient Overlays para Contraste do Texto -->
+                <div class="absolute inset-0 bg-gradient-to-r from-deep-dark/95 via-deep-dark/40 to-transparent pointer-events-none z-0"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-deep-dark/80 via-transparent to-deep-dark/20 pointer-events-none z-0"></div>
+
+                <!-- LETTERING MIDDLE/LEFT -->
+                <div class="absolute inset-0 z-10 p-6 md:p-12 lg:p-16 xl:p-24 flex flex-col justify-center pointer-events-none pt-24 md:pt-16">
+                    <div class="max-w-4xl hero-fade-out will-change-transform pointer-events-auto mt-4 md:mt-0">
+                        
+                        <div class="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs text-gray-200 uppercase tracking-[0.2em] mb-8 shadow-sm font-sans font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-wood-800 mr-2 animate-pulse"></span>
+                            ✦ DESIGN AUTORAL EM CANELA PRETA
+                        </div>
+                        
+                        <h1 class="text-white font-manrope font-medium tracking-tighter text-5xl md:text-7xl leading-[1.1] drop-shadow-2xl">
+                            Onde a robustez da madeira <br/> encontra a elegancia do design.
+                        </h1>
+                        
+                        <p class="mt-6 text-lg text-white/70 leading-relaxed font-sans drop-shadow-lg max-w-2xl">
+                            Uma obra-prima em madeira maciça. Com contornos orgânicos e uma imponente base ripada, cada veio da Canela Preta conta uma história desenhada para gerações.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BOTTOM RIGHT PURCHASE CTA CARD -->
+                <div class="absolute bottom-6 md:bottom-12 right-6 md:right-12 z-20 hero-fade-out will-change-transform">
+                    <a href="#comprar" class="glass-effect border border-white/10 rounded-3xl p-3 flex gap-4 items-center shadow-2xl group hover:bg-white/[0.08] transition-all duration-500 overflow-hidden cursor-pointer max-w-[320px]">
+                        
+                        <!-- Thumbnail -->
+                        <div class="relative w-24 h-24 rounded-[1.25rem] overflow-hidden shrink-0 shadow-inner">
+                            <img src="textura%20mesa.png" alt="Mesa Thumbnail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:opacity-0"></div>
+                        </div>
+                        
+                        <div class="flex-1 pr-2">
+                            <h4 class="text-white font-manrope font-medium text-lg leading-tight tracking-tight">Mesa Orgânica <br/> • Peça Única</h4>
+                            <p class="text-wood-800 font-sans text-[10px] uppercase font-bold tracking-widest mt-2">Fabricação Exclusiva</p>
+                        </div>
+                        
+                        <!-- Premium icon button reveal hover -->
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex flex-col items-center justify-center text-white shrink-0 group-hover:bg-white group-hover:text-black transition-colors duration-300 mr-1 bg-white/5">
+                            <iconify-icon icon="lucide:arrow-right" class="text-xl group-hover:-rotate-45 transition-transform duration-500 ease-out"></iconify-icon>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Scroll Down Hint Indicator -->
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-fade-out z-10 mix-blend-difference pointer-events-none">
+                    <div class="w-px h-16 bg-gradient-to-b from-white to-transparent opacity-40"></div>
+                    <span class="text-white/40 text-[10px] font-mono tracking-widest uppercase">Scroll Explore</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEGUNDA DOBRA: DESIGN DA MESA -->
+        <section id="detalhes" class="w-full bg-white flex flex-col items-center py-24 md:py-32 px-6 md:px-12 lg:px-24 border-t border-gray-100">
+            <div class="max-w-7xl w-full space-y-24 md:space-y-32">
+                
+                <!-- CARD 1: Imagem na Esquerda, Texto na Direita -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <!-- Esquerda: Imagens com Hover -->
+                    <div class="w-full lg:w-1/2 relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-xl shadow-black/5 cursor-pointer bg-gray-50">
+                        <!-- Imagem Preto e Branco (Ativa primeiro) -->
+                        <img src="desenho%20tecnico1%20preto-branco.png?v=2" alt="Desenho Técnico 1 P&B" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100 group-hover:opacity-0">
+                        <!-- Imagem Colorida (Surge no hover) -->
+                        <img src="desenho%20tecnico1.png?v=2" alt="Desenho Técnico 1 Colorido" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0 group-hover:opacity-100">
+                    </div>
+                    <!-- Direita: Textos -->
+                    <div class="w-full lg:w-1/2 flex flex-col items-start text-left">
+                        <span class="text-xs text-wood-900 font-mono tracking-[0.2em] uppercase font-bold mb-6 flex items-center gap-3">
+                            <span class="w-8 h-px bg-wood-900"></span> ENGENHARIA DO LUXO
+                        </span>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.05] font-manrope font-medium tracking-tighter mb-6 text-balance">
+                            O rigor arquitetônico <br/> por trás do orgânico.
+                        </h2>
+                        <p class="text-lg text-gray-600 leading-relaxed font-sans max-w-xl">
+                            A assimetria perfeita não nasce do acaso, ela é milimetricamente calculada. Onde os olhos veem apenas fluidez poética, reside a mais pura precisão estrutural. Cada raio de curvatura e o distanciamento exato da base foram desenhados para garantir estabilidade absoluta e uma proporção visual perfeita. É o casamento definitivo entre o brutalismo da madeira e o rigor do design autoral.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Texto na Esquerda, Imagem na Direita -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20 mt-12 md:mt-0">
+                    <!-- Direita (Imagem): Imagens com Hover -->
+                    <div class="w-full lg:w-1/2 relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-xl shadow-black/5 cursor-pointer bg-gray-50">
+                        <!-- Imagem Preto e Branco -->
+                        <img src="desenho%20tecnico2%20preto-branco.png?v=2" alt="Desenho Técnico 2 P&B" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100 group-hover:opacity-0">
+                        <!-- Imagem Colorida -->
+                        <img src="desenho%20tecnico2.png?v=2" alt="Desenho Técnico 2 Colorido" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0 group-hover:opacity-100">
+                    </div>
+                    <!-- Esquerda (Texto): Textos -->
+                    <div class="w-full lg:w-1/2 flex flex-col items-start text-left">
+                        <span class="text-xs text-wood-900 font-mono tracking-[0.2em] uppercase font-bold mb-6 flex items-center gap-3">
+                            <span class="w-8 h-px bg-wood-900"></span> ENGENHARIA DO LUXO
+                        </span>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.05] font-manrope font-medium tracking-tighter mb-6 text-balance">
+                            O rigor arquitetônico <br/> por trás do orgânico.
+                        </h2>
+                        <p class="text-lg text-gray-600 leading-relaxed font-sans max-w-xl">
+                            A assimetria perfeita não nasce do acaso, ela é milimetricamente calculada. Onde os olhos veem apenas fluidez poética, reside a mais pura precisão estrutural. Cada raio de curvatura e o distanciamento exato da base foram desenhados para garantir estabilidade absoluta e uma proporção visual perfeita. É o casamento definitivo entre o brutalismo da madeira e o rigor do design autoral.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="historia" class="min-h-[50vh] w-full bg-deep-dark flex items-center justify-center p-8 rounded-t-[2.5rem]">
+            <div class="text-center max-w-2xl text-white">
+                <h2 class="text-4xl font-manrope font-medium tracking-tighter mb-6">História - Fim do Scroll</h2>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lenis Smooth Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- GSAP / ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Initialize Lenis (High End Smooth Apple/Awwwards Scroll)
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                smoothTouch: false,
+                touchMultiplier: 2,
+            });
+
+            // Connect Lenis to ScrollTrigger Native Match
+            lenis.on('scroll', ScrollTrigger.update);
+            
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0); 
+
+            // 2. Setup GSAP Plugins
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 3. Setup Cool GSAP Entrance Animations
+            function playHeroEntrance() {
+                gsap.fromTo(".hero-fade-out", 
+                    { y: "50px", opacity: 0, filter: "blur(12px)" },
+                    { y: "0px", opacity: 1, filter: "blur(0px)", duration: 1.5, stagger: 0.1, ease: "power2.out", overwrite: true }
+                );
+            }
+
+            const tlEntrance = gsap.timeline();
+            tlEntrance.from("#hero-box", {
+                opacity: 0,
+                scale: 0.95,
+                duration: 1.8,
+                ease: "power3.out"
+            });
+            
+            // Execute entrance automatically after box loads
+            // Using a timeout or a timeline call
+            setTimeout(() => playHeroEntrance(), 800);
+
+            // Create separated ScrollTrigger for the UI overlay elements
+            // so they exit gracefully and re-enter properly on scroll-back
+            ScrollTrigger.create({
+                trigger: "#hero-wrapper",
+                start: "top -50", // When user scrolls down 50px
+                onEnter: () => {
+                    gsap.to(".hero-fade-out", {
+                        y: "-80px",
+                        opacity: 0,
+                        filter: "blur(10px)",
+                        duration: 0.4,
+                        stagger: 0.04,
+                        ease: "power2.in",
+                        overwrite: true
+                    });
+                },
+                onLeaveBack: () => {
+                    // When scroll is perfectly at the top, replay entrance
+                    playHeroEntrance();
+                }
+            });
+
+            // 4. Parallax Scroll / Image Sequence Scrubbing (Apple Style Canvas)
+            const canvas = document.getElementById("hero-canvas");
+            const ctx = canvas.getContext("2d");
+
+            const frameCount = 240;
+            const currentFrame = index => (
+                `frames%20hero%20desktop/ezgif-6b902fd6eea368ac-jpg/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`
+            );
+
+            const images = [];
+            const frames = { frame: 0 };
+            let imagesLoaded = 0;
+
+            // Preload all frames
+            for (let i = 0; i < frameCount; i++) {
+                const img = new Image();
+                img.src = currentFrame(i);
+                images.push(img);
+                
+                if (i === 0) {
+                    img.onload = () => {
+                        // Set canvas intrinsic size to match frame size
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        render(); // draw first frame immediately
+                    };
+                }
+            }
+
+            function render() {
+                const img = images[Math.round(frames.frame)];
+                if(img && img.complete) {
+                    // Clear and draw the frame
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                }
+            }
+
+            function setupCanvasScrub() {
+                const scrollDistance = 3500; 
+
+                const tlScroll = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: "#hero-wrapper",
+                        start: "top top",
+                        end: `+=${scrollDistance}`,
+                        pin: true,
+                        scrub: 1.2, // 1.2s lag on scrub for buttery smooth trail effect
+                        anticipatePin: 1
+                    }
+                });
+
+                // a) Drive frame index via proxy
+                tlScroll.to(frames, {
+                    frame: frameCount - 1,
+                    snap: "frame", // ensure we hit integer frames
+                    ease: "none",
+                    onUpdate: render
+                }, 0);
+
+                // Eject logic is now handled by the separate ScrollTrigger onEnter
+
+                // Dim the gradient a bit more when scrolling to emphasize only the video art
+                tlScroll.to("#hero-box [class*='bg-gradient']", {
+                    opacity: 0.5,
+                    duration: 0.3
+                }, 0);
+            }
+
+            // Initialize Scrub
+            setupCanvasScrub();
+
+            // High custom smooth click anchors integrated w/ Lenis
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    lenis.scrollTo(this.getAttribute('href'), {
+                       duration: 1.5,
+                       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                    });
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Design System Showcase</title>
+
+<!-- Fonts from Google CDN instead of local assets -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Tailwind CDN injected to restore styling -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          manrope: ['Manrope', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+<style>
+body { font-family: 'Inter', sans-serif; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.font-manrope { font-family: 'Manrope', sans-serif !important; }
+
+/* Injected Glass & Animation Effects */
+.glass-effect {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+@keyframes shimmer {
+    from { transform: translateX(-100%) skewX(-15deg); }
+    to { transform: translateX(200%) skewX(-15deg); }
+}
+.flashlight-card { background: rgba(255, 255, 255, 0.01); }
+.flashlight-card::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: radial-gradient(
+        350px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.15),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    z-index: 2;
+}
+.flashlight-card:hover::before { opacity: 1; }
+</style>
+<style data-scroll-fix="true">
+html, body {
+    overflow: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    min-height: 100% !important;
+    scroll-behavior: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+body, .wrapper, main, #__next, #app, .page, .content {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+.loader, .preloader, .loading, [class*="loader"], [class*="preloader"] {
+    display: none !important;
+    opacity: 0 !important;
+}
+.word-inner, .char, .line, [data-aos], [data-scroll],
+.hero-text span, .hero-fade, [class*="hero"] span {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+.translate-y-full, .translate-x-full, .-translate-y-full, .-translate-x-full,
+.translate-y-1\/2, .-translate-y-1\/2, .translate-y-\[100\%\], .translate-y-\[110\%\] {
+    transform: none !important;
+}
+.opacity-0, [class*="opacity-0"] {
+    opacity: 1 !important;
+}
+.scale-0, .scale-50, .scale-75 {
+    transform: none !important;
+}
+html.lenis, html.lenis-smooth, 
+body.lenis, body.lenis-smooth,
+.lenis-wrapper, .lenis-content,
+[data-lenis-prevent], [data-scroll-container] {
+    overflow: visible !important;
+    height: auto !important;
+}
+body.flex.items-center,
+body.flex.justify-center {
+    align-items: flex-start !important;
+    min-height: 100vh;
+    height: auto !important;
+}
+main, #__next, #__nuxt, #app, .main-content {
+    overflow: visible !important;
+    height: auto !important;
+}
+html {
+    scroll-behavior: smooth !important;
+}
+</style>
+</head>
+<body class="antialiased selection:bg-orange-800 selection:text-white text-gray-900 bg-gray-200">
+<div class="mx-auto max-w-7xl border-l border-r border-dashed border-gray-300 min-h-screen relative bg-gray-50/50">
+<!-- Vertical Grid Lines Background (Subtle) -->
+<div class="absolute inset-0 pointer-events-none flex justify-between px-4 opacity-20 z-0">
+<div class="w-px h-full bg-gray-300"></div>
+<div class="w-px h-full bg-gray-300"></div>
+<div class="w-px h-full bg-gray-300"></div>
+</div>
+
+<!-- TOP HORIZONTAL NAV -->
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 py-3 px-6 flex flex-wrap gap-6 justify-center shadow-sm">
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#hero">Hero</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#typography">Typography</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#colors">Colors & Surfaces</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#components">UI Components</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#layout">Layout & Spacing</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#motion">Motion & Interaction</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#icons">Icons</a>
+</nav>
+
+<main class="relative z-10 p-4 md:p-6 lg:p-8 space-y-20">
+
+<!-- 0) Hero (Exact Clone, Text Adapted) -->
+<section id="hero" class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white min-h-[600px] flex flex-col justify-between p-8 lg:p-12 shadow-2xl shadow-gray-200">
+<!-- Background Abstract Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Abstract 3D" class="opacity-60 mix-blend-overlay w-full h-full object-cover" src="assets/1f147f7d-661c-4181-a17e-e2ca53_f75361268fa8.webp"/>
+<div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute top-0 right-0 bottom-0 left-0"></div>
+</div>
+<!-- Navigation Pill -->
+<div class="relative z-10 w-full flex justify-center">
+<nav class="bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-2 px-3 flex items-center gap-6 text-sm">
+<a class="inline-flex items-center justify-center bg-center w-[100px] h-[40px] bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/52ee558b-0436-4cc7-9737-33c078b5b091_1600w.png)] bg-cover rounded" href="#"></a>
+<a class="text-gray-300 hover:text-white transition-colors font-sans" href="#">Products</a>
+<a class="text-gray-300 hover:text-white transition-colors font-sans" href="#">Solutions</a>
+<a class="text-gray-300 hover:text-white transition-colors font-sans" href="#">Developers</a>
+<button class="bg-white text-black px-4 py-1.5 rounded-full text-sm hover:bg-orange-50 transition-colors font-sans">
+                            Dashboard
+                        </button>
+</nav>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 mt-auto max-w-4xl">
+<h1 class="text-5xl md:text-7xl leading-[1.1] mb-8 text-white font-manrope font-medium tracking-tighter">
+                        The unified API for <br/>
+<span class="text-gray-400 font-manrope font-medium tracking-tighter">modern design</span> <br/>
+                        systems.
+                    </h1>
+</div>
+<!-- Floating Badge -->
+<div class="absolute bottom-12 right-12 z-20 hidden md:flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 p-2 pr-5 rounded-2xl">
+<div class="overflow-hidden w-12 h-16 bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/e1a3863d-784c-4cf0-9cb1-c0a79691ce9a_320w.jpg)] bg-cover bg-center rounded-xl relative shadow-lg">
+<div class="bg-black/20 absolute top-0 right-0 bottom-0 left-0"></div>
+</div>
+<div class="">
+<p class="text-xs text-gray-400 uppercase tracking-widest font-sans">Status</p>
+<p class="text-sm text-white font-sans">All Systems Operational</p>
+</div>
+<div class="flex gap-2 ml-4">
+<button class="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+<iconify-icon class="text-white text-base" icon="lucide:arrow-left"></iconify-icon>
+</button>
+<button class="h-8 w-8 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition">
+<iconify-icon class="text-black text-base" icon="lucide:arrow-right"></iconify-icon>
+</button>
+</div>
+</div>
+</section>
+
+<!-- 1) Typography -->
+<section id="typography" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">1. Typography</h2>
+  </div>
+  
+  <div class="flex flex-col divide-y divide-gray-100">
+    
+    <!-- Heading 1 -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 pt-0">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Heading 1</div>
+      <div class="w-full lg:w-3/5 bg-[#0f1115] p-8 rounded-2xl flex items-center overflow-hidden">
+        <h1 class="text-5xl md:text-7xl leading-[1.1] text-white font-manrope font-medium tracking-tighter truncate">
+            Heading 1
+        </h1>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">72px / 1.1</div>
+    </div>
+
+    <!-- Heading 2 -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Heading 2</div>
+      <div class="w-full lg:w-3/5 px-4 flex items-center overflow-hidden">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.05] font-manrope font-medium tracking-tighter truncate">
+            Heading 2
+        </h2>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">60px / 1.05</div>
+    </div>
+
+    <!-- Heading 3 -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Heading 3</div>
+      <div class="w-full lg:w-3/5 px-4 flex items-center overflow-hidden">
+        <h3 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter truncate">
+            Heading 3
+        </h3>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">36px / 1.25</div>
+    </div>
+
+    <!-- Heading 4 -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Heading 4</div>
+      <div class="w-full lg:w-3/5 px-4 flex items-center overflow-hidden">
+        <h4 class="text-xl text-gray-900 leading-snug font-manrope font-medium tracking-tighter truncate">
+            Heading 4
+        </h4>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">20px / 1.375</div>
+    </div>
+
+    <!-- Paragraph -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Paragraph</div>
+      <div class="w-full lg:w-3/5 px-4">
+        <p class="text-lg text-gray-500 leading-relaxed font-sans">
+            Abstract away the complexity of banking rails so you can focus on building your product, not maintaining infrastructure.
+        </p>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">18px / 1.625</div>
+    </div>
+
+    <!-- Regular M -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Regular M</div>
+      <div class="w-full lg:w-3/5 px-4">
+        <p class="text-[15px] text-gray-500 leading-relaxed font-sans">
+            Every transaction is automatically reconciled in real-time with zero manual input.
+        </p>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">15px / 1.625</div>
+    </div>
+
+    <!-- Regular S -->
+    <div class="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div class="w-full lg:w-1/5 text-sm text-gray-500 font-mono tracking-wide uppercase">Regular S</div>
+      <div class="w-full lg:w-3/5 px-4">
+        <p class="text-sm text-gray-500 leading-relaxed font-sans">
+            You can upgrade, downgrade, or pause your subscription instantly via the dashboard. Usage is prorated to the second.
+        </p>
+      </div>
+      <div class="w-full lg:w-1/5 text-left lg:text-right text-sm text-gray-400 font-mono">14px / 1.5</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 2) Colors & Surfaces -->
+<section id="colors" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">2. Colors & Surfaces</h2>
+  </div>
+
+  <h3 class="text-xl text-gray-900 font-manrope font-medium tracking-tighter mb-4">Backgrounds</h3>
+  <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-[#0f1115] shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Dark Card</p>
+      <p class="text-xs text-gray-500 font-mono">bg-[#0f1115]</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-[#050505] shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Deep Dark</p>
+      <p class="text-xs text-gray-500 font-mono">bg-[#050505]</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-[#9a3412] shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Wood/Brown Core (Primary)</p>
+      <p class="text-xs text-gray-500 font-mono">bg-[#9a3412]</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-orange-50 shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Wood/Brown Light</p>
+      <p class="text-xs text-gray-500 font-mono">bg-orange-50</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-orange-700 shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Wood/Brown Mid</p>
+      <p class="text-xs text-gray-500 font-mono">bg-orange-700</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-gray-900 shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Gray Dark</p>
+      <p class="text-xs text-gray-500 font-mono">bg-gray-900</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-gray-200 shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Gray Accent</p>
+      <p class="text-xs text-gray-500 font-mono">bg-gray-200</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-gray-100 shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Gray 100</p>
+      <p class="text-xs text-gray-500 font-mono">bg-gray-100</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-gray-50 shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">Gray Light</p>
+      <p class="text-xs text-gray-500 font-mono">bg-gray-50</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="h-24 w-full rounded-2xl bg-white shadow-inner border border-gray-200"></div>
+      <p class="text-sm text-gray-900 font-medium font-sans">White Floor</p>
+      <p class="text-xs text-gray-500 font-mono">bg-white</p>
+    </div>
+  </div>
+
+  <h3 class="text-xl text-gray-900 font-manrope font-medium tracking-tighter mt-12 mb-4">Overlays & Glass</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="relative h-32 rounded-2xl overflow-hidden border border-gray-200 flex items-center justify-center p-4" style="background: url('assets/1f147f7d-661c-4181-a17e-e2ca53_f75361268fa8.webp') center/cover;">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80"></div>
+      <span class="relative z-10 text-white font-mono text-xs">from-[#0f1115] via-transparent to-[#0f1115]/80</span>
+    </div>
+    <div class="relative h-32 rounded-2xl overflow-hidden border border-gray-200 flex items-center justify-center p-4 bg-gray-100" style="background: url('assets/2e062daf-ac81-41e0-a217-47ea64_ec1b0497241d.jpg') center/cover;">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60"></div>
+      <span class="relative z-10 text-white font-mono text-xs mix-blend-difference">from-transparent via-transparent to-black/60</span>
+    </div>
+    <div class="relative h-32 rounded-2xl overflow-hidden border border-gray-200 flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-gradient-to-b from-orange-50/40 to-transparent"></div>
+      <span class="relative z-10 text-gray-800 font-mono text-xs">from-orange-50/40 to-transparent</span>
+    </div>
+    <div class="relative h-32 rounded-2xl overflow-hidden border border-gray-200 flex items-center justify-center p-4 bg-[#1a1a1a]">
+      <div class="absolute bg-white/5 backdrop-blur-md border object border-white/10 rounded-2xl p-6 m-4 flex items-center justify-center">
+         <span class="text-white font-mono text-xs text-center">bg-white/5 backdrop-blur-md<br/>border border-white/10</span>
+      </div>
+    </div>
+  </div>
+  
+  <h3 class="text-xl text-gray-900 font-manrope font-medium tracking-tighter mt-12 mb-4">Borders & Dividers</h3>
+  <div class="flex flex-col gap-6">
+    <div class="border-b border-gray-200 pb-2">
+      <p class="text-xs text-gray-500 font-mono">border-gray-200</p>
+    </div>
+    <div class="border-b border-gray-100 pb-2">
+      <p class="text-xs text-gray-500 font-mono">border-gray-100</p>
+    </div>
+    <div class="border-b border-gray-300 border-dashed pb-2">
+      <p class="text-xs text-gray-500 font-mono">border-dashed border-gray-300</p>
+    </div>
+    <div class="bg-[#0f1115] p-6 rounded-2xl">
+      <div class="border-t border-white/10 pt-2">
+        <p class="text-xs text-gray-400 font-mono">border-white/10</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3) UI Components -->
+<section id="components" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">3. UI Components</h2>
+  </div>
+
+  <!-- Buttons Panel -->
+  <div class="space-y-6">
+    <h3 class="text-xl text-gray-900 font-manrope font-medium tracking-tighter border-b border-gray-100 pb-2">Buttons</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      
+      <!-- Light Theme Buttons -->
+      <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 space-y-8">
+        <h4 class="text-sm font-sans text-gray-500 font-medium">Light Context Buttons</h4>
+        
+        <div class="flex items-center gap-4">
+          <div class="w-1/2">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Default</p>
+            <button class="flex items-center gap-3 bg-gray-900 text-white pl-5 pr-2 py-2 rounded-full text-base font-medium font-sans">
+                <span>Action</span>
+                <span class="bg-white text-black rounded-full w-8 h-8 flex items-center justify-center">
+                    <iconify-icon class="text-lg" icon="lucide:arrow-right"></iconify-icon>
+                </span>
+            </button>
+          </div>
+          <div class="w-1/2">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Hover State</p>
+            <button class="group flex items-center gap-3 bg-gray-800 text-white pl-5 pr-2 py-2 rounded-full text-base font-medium transition-all font-sans cursor-pointer focus:bg-gray-800">
+                <span>Action</span>
+                <span class="bg-white text-black rounded-full w-8 h-8 flex items-center justify-center scale-110">
+                    <iconify-icon class="text-lg" icon="lucide:arrow-right"></iconify-icon>
+                </span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <div class="w-1/2">
+              <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Ghost / Outline</p>
+              <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 font-sans">
+                  <iconify-icon class="text-lg" icon="lucide:arrow-left"></iconify-icon>
+              </button>
+            </div>
+            <div class="w-1/2">
+              <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Hover State</p>
+              <button class="w-10 h-10 rounded-full border border-gray-900 flex items-center justify-center text-gray-900 font-sans">
+                  <iconify-icon class="text-lg" icon="lucide:arrow-left"></iconify-icon>
+              </button>
+            </div>
+        </div>
+      </div>
+
+      <!-- Dark Theme Buttons -->
+      <div class="bg-[#0f1115] p-8 rounded-2xl border border-[#1a1a1a] space-y-8">
+        <h4 class="text-sm font-sans text-gray-400 font-medium">Dark Context Buttons</h4>
+        
+        <div class="flex items-center gap-4">
+          <div class="w-1/2">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Default</p>
+            <button class="bg-white text-black px-4 py-1.5 rounded-full text-sm font-sans">
+                Dashboard
+            </button>
+          </div>
+          <div class="w-1/2">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Hover State</p>
+            <button class="bg-orange-50 text-black px-4 py-1.5 rounded-full text-sm font-sans">
+                Dashboard
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="w-1/2">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Primary CTA</p>
+            <button class="w-full max-w-[160px] bg-[#9a3412] text-white py-3 rounded-xl text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(154,52,18,0.3)] font-sans">
+                Upgrade <iconify-icon class="text-base flex-shrink-0" icon="lucide:arrow-right"></iconify-icon>
+            </button>
+          </div>
+          <div class="w-1/2">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Hover State</p>
+            <button class="w-full max-w-[160px] bg-[#7c2d12] text-white py-3 rounded-xl text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(154,52,18,0.3)] font-sans">
+                Upgrade <iconify-icon class="text-base flex-shrink-0" icon="lucide:arrow-right"></iconify-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="w-full">
+            <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Beam Animation Button (Gemini Sect. 3)</p>
+            <div class="group relative inline-block">
+                <div class="-inset-2 group-hover:opacity-100 transition duration-500 bg-gray-600/30 opacity-0 rounded-full absolute blur-xl"></div>
+                <div class="absolute -inset-[1px] rounded-full overflow-hidden opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)] animate-[spin_2s_linear_infinite]"></div>
+                </div>
+                <button class="group relative z-10 flex items-center justify-center overflow-hidden rounded-full p-[1px] leading-none">
+                    <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)]"></span>
+                    <span class="relative flex h-full w-full items-center rounded-full bg-[#050505] pt-4 pr-10 pb-4 pl-10 ring-1 ring-white/10">
+                        <span class="absolute inset-0 overflow-hidden rounded-full">
+                            <span class="absolute top-0 left-0 h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-[shimmer_1.5s_infinite] group-hover:opacity-100"></span>
+                        </span>
+                        <span class="relative z-10 flex items-center text-lg font-medium tracking-wide text-white font-sans">Get Access</span>
+                        <span class="relative z-10 ml-4 flex items-center text-gray-500 transition duration-200 group-hover:translate-x-1 group-hover:text-white">
+                            <iconify-icon class="text-2xl" icon="lucide:arrow-right"></iconify-icon>
+                        </span>
+                    </span>
+                </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+          <div class="w-1/2">
+             <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Icon Round</p>
+             <button class="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center">
+                 <iconify-icon class="text-white text-base" icon="lucide:arrow-left"></iconify-icon>
+             </button>
+          </div>
+          <div class="w-1/2">
+             <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-2">Hover State</p>
+             <button class="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
+                 <iconify-icon class="text-white text-base" icon="lucide:arrow-left"></iconify-icon>
+             </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-6 mt-12">
+    <h3 class="text-xl text-gray-900 font-manrope font-medium tracking-tighter border-b border-gray-100 pb-2">Cards & Badges</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+        
+        <!-- Light context cards -->
+        <div class="space-y-8">
+           <div>
+               <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Benefit Card</p>
+               <div class="relative w-64 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-5 z-10">
+                   <div class="flex items-center gap-3 mb-5">
+                       <div class="w-9 h-9 rounded-full bg-orange-50 flex items-center justify-center border border-orange-100">
+                           <iconify-icon class="text-orange-900 text-sm" icon="lucide:scan-face"></iconify-icon>
+                       </div>
+                       <div class="text-left space-y-1.5 w-full">
+                           <div class="h-2 w-full bg-gray-100 rounded-full"></div>
+                           <div class="h-1.5 w-2/3 bg-gray-50 rounded-full"></div>
+                       </div>
+                   </div>
+                   <!-- Progress bars -->
+                   <div class="space-y-2.5 mb-5 w-full">
+                       <div class="h-1.5 w-full bg-gray-50 rounded-full overflow-hidden">
+                           <div class="h-full w-2/3 bg-orange-800/20 rounded-full"></div>
+                       </div>
+                       <div class="h-1.5 w-5/6 bg-gray-50 rounded-full"></div>
+                   </div>
+                   <div class="flex items-center justify-between border-t border-gray-50 pt-3">
+                       <div class="h-1.5 w-10 bg-gray-100 rounded-full"></div>
+                       <span class="flex items-center gap-1.5 text-[10px] text-orange-950 bg-orange-50 px-2.5 py-1 rounded-full border border-orange-100/50 font-sans">
+                           <iconify-icon class="text-xs" icon="lucide:check-circle-2"></iconify-icon> KYB Verified
+                       </span>
+                   </div>
+               </div>
+           </div>
+
+           <div>
+              <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Glass Effect Card</p>
+              <div class="relative w-64 h-48 bg-[#1a1a1a] rounded-2xl flex items-center justify-center p-4 overflow-hidden" style="background: url('assets/1f147f7d-661c-4181-a17e-e2ca53_f75361268fa8.webp') center/cover;">
+                  <div class="glass-effect bg-gradient-to-r from-white/20 to-white/5 relative w-full h-full rounded-[1em] flex flex-col p-5 shadow-2xl">
+                       <div class="absolute inset-0 rounded-[1em] border border-white/50 [mask-image:linear-gradient(135deg,white,transparent_50%)]"></div>
+                       <div class="absolute inset-0 rounded-[1em] border border-orange-500/50 [mask-image:linear-gradient(135deg,transparent_50%,white)]"></div>
+                       <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white w-max mb-3 font-sans">QUANTUM READY</span>
+                       <h4 class="text-white text-lg font-medium font-manrope z-10 mt-auto">Glass Component</h4>
+                  </div>
+              </div>
+           </div>
+
+           <div>
+              <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Pills</p>
+              <div class="flex items-center gap-3">
+                  <span class="inline-flex items-center rounded-full border border-gray-200 bg-white/80 backdrop-blur-sm px-3 py-1 text-xs text-gray-500 shadow-sm font-sans">
+                    Benefits
+                  </span>
+                  <div class="inline-flex items-center border border-orange-700/30 bg-orange-700/10 px-3 py-1 text-xs text-orange-700 font-sans">
+                     Wait, they use rounded-full for pills. Let's fix that text.
+                  </div>
+              </div>
+           </div>
+        </div>
+
+        <!-- Dark context cards -->
+        <div class="bg-[#0f1115] p-6 rounded-2xl flex flex-col gap-8">
+            <div>
+               <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Pricing Card Core</p>
+               <div class="flex flex-col p-6 bg-white/[0.03] border border-white/10 rounded-3xl w-full max-w-[280px]">
+                   <div class="h-10 w-10 mb-4 rounded-xl bg-white/10 flex items-center justify-center border border-white/10">
+                       <iconify-icon class="text-white text-xl" icon="lucide:diamond"></iconify-icon>
+                   </div>
+                   <div class="mb-4">
+                       <div class="flex items-baseline gap-1">
+                           <span class="text-2xl text-white font-manrope font-medium tracking-tighter">Custom</span>
+                       </div>
+                       <h3 class="text-base text-white mt-3 font-sans">Platform</h3>
+                       <p class="text-sm text-gray-400 mt-1 leading-relaxed font-sans">For marketplaces and platforms.</p>
+                   </div>
+               </div>
+            </div>
+            
+            <div>
+               <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Flashlight Card (Gemini Sect. 7)</p>
+               <div class="flashlight-card relative border border-white/5 bg-gray-900/60 ring-1 ring-white/5 rounded-2xl p-6 flex flex-col justify-end group overflow-hidden w-full max-w-[280px] h-[200px]" onmousemove="const rect = this.getBoundingClientRect(); this.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`); this.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);">
+                   <iconify-icon class="text-4xl text-gray-500 mb-4 group-hover:text-white transition-colors duration-500" icon="lucide:cpu"></iconify-icon>
+                   <div class="text-sm text-gray-300 font-medium tracking-wide font-sans">Hover Me - Trace Border</div>
+               </div>
+            </div>
+
+            <div>
+               <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Badges</p>
+               <div class="flex flex-wrap gap-4 items-center">
+                   <span class="inline-flex items-center rounded-full border border-orange-700/30 bg-orange-700/10 px-3 py-1 text-xs text-orange-700 font-sans">
+                        Simple Pricing
+                   </span>
+                   <span class="bg-orange-700 text-black text-[10px] px-2 py-1 rounded uppercase tracking-wider font-sans">Most Popular</span>
+               </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4) Layout & Spacing -->
+<section id="layout" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">4. Layout & Spacing</h2>
+  </div>
+
+  <h3 class="text-xl text-gray-900 font-manrope font-medium tracking-tighter border-b border-gray-100 pb-2 mb-6">Structural Patterns</h3>
+  
+  <div class="space-y-12">
+      <!-- 12-Column Asymmetric (4/4/4) used in THREE COLUMN GRID SECTION -->
+      <div>
+          <p class="text-[10px] text-gray-500 font-mono tracking-wider uppercase mb-3">grid grid-cols-1 lg:grid-cols-12 gap-6</p>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gray-50 p-6 border border-gray-200 rounded-2xl">
+              <div class="lg:col-span-4 border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">lg:col-span-4</span>
+              </div>
+              <div class="lg:col-span-4 border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">lg:col-span-4</span>
+              </div>
+              <div class="lg:col-span-4 border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">lg:col-span-4</span>
+              </div>
+          </div>
+      </div>
+
+      <!-- 3-Column Equal Pattern -->
+      <div>
+          <p class="text-[10px] text-gray-500 font-mono tracking-wider uppercase mb-3">grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-50 p-6 border border-gray-200 rounded-2xl">
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Column</span>
+              </div>
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Column</span>
+              </div>
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Column</span>
+              </div>
+          </div>
+      </div>
+
+      <!-- 4-Column Pattern -->
+      <div>
+          <p class="text-[10px] text-gray-500 font-mono tracking-wider uppercase mb-3">grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-gray-50 p-6 border border-gray-200 rounded-2xl">
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Col 1</span>
+              </div>
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Col 2</span>
+              </div>
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Col 3</span>
+              </div>
+              <div class="border-2 border-dashed border-gray-300 h-24 rounded flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-mono text-center">Col 4</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- 5) Motion & Interaction -->
+<section id="motion" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">5. Motion & Interaction</h2>
+    <p class="text-gray-500 mt-2 font-sans">Hover over the elements below to see the motion behaviors from the system.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Card Lift & Shadows -->
+      <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col items-center justify-center min-h-[280px]">
+          <p class="text-[10px] font-sans font-medium text-gray-500 uppercase tracking-wider mb-8">Card Lift</p>
+          <div class="group relative w-40 h-24 flex items-center justify-center cursor-pointer">
+              <!-- lift mock -->
+              <div class="w-full h-full bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 relative z-10 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] flex items-center justify-center">
+                  <span class="text-sm font-sans font-medium text-gray-900 cursor-pointer">Hover Me</span>
+              </div>
+          </div>
+          <p class="text-[10px] text-gray-400 font-mono mt-8 text-center max-w-[150px]">transition-all duration-500 hover:-translate-y-2 hover:shadow-...</p>
+      </div>
+
+      <!-- Arrow Interaction -->
+      <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col items-center justify-center min-h-[280px]">
+          <p class="text-[10px] font-sans font-medium text-gray-500 uppercase tracking-wider mb-8">Inline Arrow Slide</p>
+          <a class="group inline-flex items-center text-sm text-gray-900 hover:text-orange-900 transition-colors border-b border-gray-900 hover:border-orange-900 pb-0.5 whitespace-nowrap font-sans cursor-pointer">
+                Hover to view Link
+                <iconify-icon class="ml-1 text-lg transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" icon="lucide:arrow-up-right"></iconify-icon>
+          </a>
+          <p class="text-[10px] text-gray-400 font-mono mt-8 text-center max-w-[150px]">hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform</p>
+      </div>
+
+      <!-- Icon button Expand -->
+      <div class="bg-[#0f1115] p-6 rounded-2xl border border-[#1a1a1a] flex flex-col items-center justify-center min-h-[280px]">
+          <p class="text-[10px] font-sans font-medium text-gray-400 uppercase tracking-wider mb-8">Button Arrow Scale</p>
+          <button class="group flex items-center gap-3 bg-white text-black pl-5 pr-2 py-2 rounded-full text-base font-medium transition-all font-sans">
+                <span>Hover Me</span>
+                <span class="bg-gray-100 text-black rounded-full w-8 h-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <iconify-icon class="text-lg" icon="lucide:arrow-right"></iconify-icon>
+                </span>
+          </button>
+          <p class="text-[10px] text-gray-500 font-mono mt-8 text-center max-w-[150px]">group-hover:scale-110 transition-transform</p>
+      </div>
+      
+      <!-- Image Zoom -->
+      <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col items-center justify-center min-h-[280px] md:col-span-3 lg:col-span-1">
+          <p class="text-[10px] font-sans font-medium text-gray-500 uppercase tracking-wider mb-8">Image Zoom FX</p>
+          <div class="relative w-40 h-24 rounded-2xl overflow-hidden group cursor-pointer bg-[#1a1a1a]">
+              <img src="assets/61714d78-adc9-4724-b65b-b53759_9ade30586294.jpg" class="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105" alt="texture"/>
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 flex items-center justify-center">
+                  <span class="text-white text-sm font-sans font-medium">Hover</span>
+              </div>
+          </div>
+          <p class="text-[10px] text-gray-400 font-mono mt-8 text-center max-w-[150px]">transition-transform duration-700 hover:scale-105</p>
+      </div>
+
+  </div>
+</section>
+
+<!-- 6) Icons -->
+<section id="icons" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">6. Icons</h2>
+    <p class="text-gray-500 mt-2 font-sans text-sm">Powered by Lucide via Iconify classes present in source.</p>
+  </div>
+
+  <div class="flex flex-wrap gap-6 gap-y-10 items-center justify-start max-w-4xl">
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:arrow-right"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">arrow-right</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:arrow-left"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">arrow-left</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-24">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:arrow-up-right"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">arrow-up-right</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:check-circle"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">check-circle</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-24">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:check-circle-2"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">check-circle-2</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-orange-800" icon="lucide:scan-face"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">scan-face</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:layers"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">layers</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:diamond"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">diamond</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-900" icon="lucide:plus"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">plus</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-[#0f1115] border border-gray-800 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-400" icon="lucide:instagram"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">instagram</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-[#0f1115] border border-gray-800 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-400" icon="lucide:facebook"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">facebook</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 w-20">
+          <div class="h-14 w-14 bg-[#0f1115] border border-gray-800 rounded-xl flex items-center justify-center">
+              <iconify-icon class="text-2xl text-gray-400" icon="lucide:twitter"></iconify-icon>
+          </div>
+          <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">twitter</p>
+      </div>
+  </div>
+</section>
+
+</main>
+</div>
+</body>
+</html>
+

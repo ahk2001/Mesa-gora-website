@@ -134,6 +134,8 @@ html {
   <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#layout">Layout & Spacing</a>
   <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#motion">Motion & Interaction</a>
   <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#icons">Icons</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#terceira-dobra">Terceira Dobra</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#quarta-dobra">Quarta Dobra</a>
 </nav>
 
 <main class="relative z-10 p-4 md:p-6 lg:p-8 space-y-20">
@@ -582,7 +584,7 @@ html {
             
             <div>
                <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider mb-3">Flashlight Card (Gemini Sect. 7)</p>
-               <div class="flashlight-card relative border border-white/5 bg-gray-900/60 ring-1 ring-white/5 rounded-2xl p-6 flex flex-col justify-end group overflow-hidden w-full max-w-[280px] h-[200px]" onmousemove="const rect = this.getBoundingClientRect(); this.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`); this.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);">
+               <div class="flashlight-card relative border border-white/5 bg-gray-900/60 ring-1 ring-white/5 rounded-2xl p-6 flex flex-col justify-end group overflow-hidden w-full max-w-[280px] h-[200px]" onmousemove="this.style.setProperty('--mouse-x', `${event.clientX - this.getBoundingClientRect().left}px`); this.style.setProperty('--mouse-y', `${event.clientY - this.getBoundingClientRect().top}px`);">
                    <iconify-icon class="text-4xl text-gray-500 mb-4 group-hover:text-white transition-colors duration-500" icon="lucide:cpu"></iconify-icon>
                    <div class="text-sm text-gray-300 font-medium tracking-wide font-sans">Hover Me - Trace Border</div>
                </div>
@@ -802,6 +804,92 @@ html {
           </div>
           <p class="text-[10px] text-gray-500 font-mono uppercase tracking-wider text-center">twitter</p>
       </div>
+  </div>
+</section>
+</section>
+
+<!-- 7) Terceira Dobra / Diferenciais (Components) -->
+<section id="terceira-dobra" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">7. Componente: Cards Diferenciais (Terceira Dobra)</h2>
+    <p class="text-gray-500 mt-2 font-sans text-sm">Design pattern with 3 Flashlight Cards layout used in the homepage's third fold.</p>
+  </div>
+
+  <div class="p-8 bg-[#050505] rounded-3xl overflow-hidden shadow-2xl relative border border-gray-800 w-full">
+    <!-- Component Content -->
+    <div class="text-center mb-16 md:mb-24">
+        <span class="text-xs text-wood-800 font-mono tracking-[0.2em] uppercase font-bold mb-4 flex items-center justify-center gap-3">
+            <span class="w-8 h-px bg-wood-800"></span> BENEFÍCIOS EXCLUSIVOS <span class="w-8 h-px bg-wood-800"></span>
+        </span>
+        <h2 class="text-4xl text-white font-manrope font-medium tracking-tighter">
+            A experiência definitiva<br/> em cada detalhe.
+        </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+        <!-- CARD 1 -->
+        <div class="flashlight-card relative border border-white/5 bg-gray-900/60 ring-1 ring-white/5 rounded-[2rem] p-8 md:p-10 flex flex-col group overflow-hidden h-full shadow-2xl" onmousemove="this.style.setProperty('--mouse-x', `${event.clientX - this.getBoundingClientRect().left}px`); this.style.setProperty('--mouse-y', `${event.clientY - this.getBoundingClientRect().top}px`);">
+            <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-white/10 transition-colors duration-500">
+                <iconify-icon class="text-3xl text-gray-400 group-hover:text-white group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" icon="lucide:layers"></iconify-icon>
+            </div>
+            <h3 class="text-2xl text-wood-800 font-manrope font-medium tracking-tighter mb-4">Estabilidade Inabalável</h3>
+            <p class="text-gray-400 leading-relaxed font-sans text-sm md:text-base">A robustez da base ripada não é apenas uma escolha estética. Ela atua como um pilar arquitetônico, concentrando o centro de gravidade da peça. O resultado é uma mesa que não sofre oscilações, oferecendo segurança e conforto absolutos, não importa de qual lado o peso seja apoiado.</p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="flashlight-card relative border border-white/5 bg-gray-900/60 ring-1 ring-white/5 rounded-[2rem] p-8 md:p-10 flex flex-col group overflow-hidden h-full shadow-2xl" onmousemove="this.style.setProperty('--mouse-x', `${event.clientX - this.getBoundingClientRect().left}px`); this.style.setProperty('--mouse-y', `${event.clientY - this.getBoundingClientRect().top}px`);">
+            <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-white/10 transition-colors duration-500">
+                <iconify-icon class="text-3xl text-gray-400 group-hover:text-white group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" icon="lucide:network"></iconify-icon>
+            </div>
+            <h3 class="text-2xl text-wood-800 font-manrope font-medium tracking-tighter mb-4">O Fim das Cabeceiras</h3>
+            <p class="text-gray-400 leading-relaxed font-sans text-sm md:text-base">O design orgânico transforma a dinâmica das suas recepções. Sem quinas vivas ou hierarquias de lugares, a fluidez do tampo aproxima as pessoas. Ele permite um contato visual contínuo entre todos os convidados e acomoda lugares extras com uma naturalidade que mesas retangulares jamais teriam.</p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="flashlight-card relative border border-white/5 bg-gray-900/60 ring-1 ring-white/5 rounded-[2rem] p-8 md:p-10 flex flex-col group overflow-hidden h-full shadow-2xl" onmousemove="this.style.setProperty('--mouse-x', `${event.clientX - this.getBoundingClientRect().left}px`); this.style.setProperty('--mouse-y', `${event.clientY - this.getBoundingClientRect().top}px`);">
+            <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-white/10 transition-colors duration-500">
+                <iconify-icon class="text-3xl text-gray-400 group-hover:text-white group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-500 ease-out" icon="lucide:diamond"></iconify-icon>
+            </div>
+            <h3 class="text-2xl text-wood-800 font-manrope font-medium tracking-tighter mb-4">Superfície Vitrificada</h3>
+            <p class="text-gray-400 leading-relaxed font-sans text-sm md:text-base">O calor natural da madeira sob uma barreira de alta proteção. O acabamento em alto brilho não apenas espelha a iluminação do seu ambiente de forma deslumbrante, mas cria uma blindagem invisível contra líquidos e desgastes diários. Um luxo feito para ser usado, sem a necessidade de preocupações.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8) Quarta Dobra: A Origem (Immersive Video Section) -->
+<section id="quarta-dobra" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">8. Componente: A Origem (Quarta Dobra)</h2>
+    <p class="text-gray-500 mt-2 font-sans text-sm">Full-bleed immersive section with video background, gradient overlay, and parallax text.</p>
+  </div>
+
+  <div class="relative w-full h-[600px] rounded-[2.5rem] overflow-hidden bg-white p-6 shadow-2xl border border-gray-100">
+    <div class="relative w-full h-full rounded-[2rem] overflow-hidden bg-deep-dark">
+        <!-- Video Mock -->
+        <div class="absolute inset-0 w-full h-full bg-[#1a1a1a] flex items-center justify-center">
+            <iconify-icon class="text-6xl text-white/10" icon="lucide:video"></iconify-icon>
+            <p class="absolute inset-x-0 bottom-1/2 translate-y-20 text-center text-white/30 text-xs font-mono">VIDEO BACKGROUND PLACEHOLDER (canela-video.mp4)</p>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none z-10"></div>
+
+        <!-- Content Block -->
+        <div class="absolute bottom-12 left-12 max-w-2xl z-20">
+            <div class="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs text-gray-200 uppercase tracking-[0.2em] mb-6 font-sans font-medium">
+                ✦ A ORIGEM DA MATÉRIA
+            </div>
+            
+            <h2 class="text-white font-manrope font-medium tracking-tighter text-4xl leading-[1.1] mb-6">
+                O tempo esculpe <br/> a exclusividade.
+            </h2>
+            
+            <p class="text-sm text-white/70 leading-relaxed font-sans max-w-xl">
+                Antes de ser o centro das suas melhores memórias, ela foi história na natureza. A Canela Preta é uma madeira nobre, de crescimento imponente e silencioso. Cada veio, cada textura que você toca hoje, levou décadas para ser forjado. 
+            </p>
+        </div>
+    </div>
   </div>
 </section>
 

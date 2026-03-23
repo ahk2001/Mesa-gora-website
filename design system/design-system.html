@@ -38,6 +38,40 @@ body { font-family: 'Inter', sans-serif; }
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
+
+/* Animated Rotating Border variant mapped to Design System */
+.glowing-border-card {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+    z-index: 1;
+}
+.glowing-border-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%, transparent 100%);
+    animation: rotate-glow 4s linear infinite;
+    z-index: -2;
+    pointer-events: none;
+}
+.glowing-border-card::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: calc(2rem - 1px);
+    background: rgba(15, 17, 21, 0.7);
+    backdrop-filter: blur(24px);
+    z-index: -1;
+    pointer-events: none;
+}
+@keyframes rotate-glow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 @keyframes shimmer {
     from { transform: translateX(-100%) skewX(-15deg); }
     to { transform: translateX(200%) skewX(-15deg); }
@@ -137,6 +171,7 @@ html {
   <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#terceira-dobra">Terceira Dobra</a>
   <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#quarta-dobra">Quarta Dobra</a>
   <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#quinta-dobra">Quinta Dobra</a>
+  <a class="text-sm font-sans text-gray-600 hover:text-orange-800 transition-colors font-medium" href="#sexta-dobra">Sexta Dobra (CTA)</a>
 </nav>
 
 <main class="relative z-10 p-4 md:p-6 lg:p-8 space-y-20">
@@ -938,6 +973,46 @@ html {
         </div>
 
     </div>
+  </div>
+</section>
+
+<!-- 10) Sexta Dobra: Convite Final (CTA) -->
+<section id="sexta-dobra" class="space-y-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+  <div class="border-b border-gray-100 pb-4 mb-8">
+    <h2 class="text-3xl lg:text-4xl text-gray-900 leading-tight font-manrope font-medium tracking-tighter">10. Componente: Convite Final CTA (Sexta Dobra)</h2>
+    <p class="text-gray-500 mt-2 font-sans text-sm">Central Glassmorphism Card with Animated Rotating Border Glow.</p>
+  </div>
+
+  <div class="w-full bg-[#050505] p-8 md:p-16 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+        <div class="glowing-border-card w-full max-w-lg md:max-w-xl p-8 md:p-12 flex flex-col items-center text-center">
+            
+            <!-- Mock Image Area -->
+            <div class="w-full relative aspect-[4/3] mb-8 flex items-center justify-center overflow-hidden bg-white/5 rounded-2xl">
+                <iconify-icon class="text-6xl text-white/20" icon="lucide:image"></iconify-icon>
+            </div>
+            
+            <!-- Text Block -->
+            <div class="space-y-1 mb-10 w-full relative z-10 flex flex-col items-center">
+                <span class="text-[10px] text-wood-500 font-mono tracking-[0.2em] uppercase font-bold mb-1">Edição Limitada</span>
+                <h3 class="text-xl md:text-2xl text-gray-300 font-sans font-normal tracking-wide">Mesa Ágora</h3>
+                <p class="text-4xl md:text-6xl text-wood-800 font-manrope font-black tracking-tighter pt-2 flex items-start justify-center gap-1">
+                    <span class="text-2xl md:text-3xl font-bold mt-1.5 md:mt-2">R$</span> 8.500
+                </p>
+            </div>
+
+            <!-- Buttons Group -->
+            <div class="flex flex-row items-center justify-center gap-4 w-full relative z-10">
+                <a href="#" class="w-full max-w-[160px] py-2.5 px-3 rounded-full border border-white/20 text-white/90 text-xs font-sans font-medium hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+                    <iconify-icon icon="lucide:message-circle"></iconify-icon>
+                    Atendente
+                </a>
+                <a href="#" class="flex-1 py-4 px-6 rounded-full bg-wood-800 text-white text-base md:text-lg font-sans font-bold hover:bg-wood-700 transition-colors shadow-lg shadow-wood-800/20 flex items-center justify-center gap-2">
+                    <iconify-icon icon="lucide:shopping-bag"></iconify-icon>
+                    Comprar
+                </a>
+            </div>
+
+        </div>
   </div>
 </section>
 

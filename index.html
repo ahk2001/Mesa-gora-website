@@ -41,182 +41,7 @@
     <!-- Iconify for premium arrows/icons -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            overflow-x: hidden;
-        }
-
-        .font-manrope {
-            font-family: 'Manrope', sans-serif !important;
-        }
-
-        /* Gallery Initial State for JS Reveal */
-        .galeria-item .galeria-image-wrapper {
-            opacity: 0;
-            filter: blur(20px);
-            transform: scale(1.1) translateY(-50px);
-            will-change: transform, filter, opacity;
-        }
-
-        .galeria-item .galeria-text {
-            opacity: 0;
-            will-change: opacity;
-        }
-
-
-        /* Custom UI Glass Effect clone from design system */
-        .glass-effect {
-            background: rgba(15, 17, 21, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .will-change-transform {
-            will-change: transform, opacity, filter;
-        }
-
-        /* Flashlight Card Effect */
-        .flashlight-card {
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .flashlight-card::before {
-            content: "";
-            position: absolute;
-            inset: 0px;
-            background: radial-gradient(550px circle at var(--mouse-x) var(--mouse-y),
-                    rgba(255, 255, 255, 0.12),
-                    transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .flashlight-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Lenis CSS Fixes for true smooth scrolling */
-        html.lenis,
-        html.lenis-smooth {
-            height: auto;
-        }
-
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-
-        .lenis.lenis-stopped {
-            overflow: hidden;
-        }
-
-        .lenis.lenis-smooth iframe {
-            pointer-events: none;
-        }
-        /* Animated Rotating Border Glow */
-        .glowing-border-card {
-            position: relative;
-            border-radius: 2rem; /* 32px */
-            overflow: hidden;
-            z-index: 1; /* Ensure its context is contained */
-        }
-        .glowing-border-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent 0%,
-                transparent 30%,
-                rgba(255, 255, 255, 0.4) 50%,
-                transparent 70%,
-                transparent 100%
-            );
-            animation: rotate-glow 4s linear infinite;
-            z-index: -2;
-            pointer-events: none;
-        }
-        /* Inner mask to hide the center of the conic gradient, leaving only the border */
-        .glowing-border-card::after {
-            content: '';
-            position: absolute;
-            inset: 1px; /* Border thickness */
-            border-radius: calc(2rem - 1px);
-            background: rgba(15, 17, 21, 0.7); /* Deep dark glass */
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            z-index: -1;
-            pointer-events: none;
-        }
-        @keyframes rotate-glow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        /* Shimmer Effect for Footer Typographic Background */
-        .shimmer-text {
-            background: linear-gradient(
-                120deg,
-                rgba(255, 255, 255, 0.04) 0%,
-                rgba(255, 255, 255, 0.04) 40%,
-                rgba(255, 255, 255, 0.15) 50%,
-                rgba(255, 255, 255, 0.04) 60%,
-                rgba(255, 255, 255, 0.04) 100%
-            );
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 8s linear infinite;
-        }
-
-        @keyframes shimmer {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Hero Initial States to prevent flickering (FOUC) */
-        #hero-box, .hero-fade-out {
-            opacity: 0;
-            visibility: hidden;
-            will-change: transform, opacity, filter;
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 768px) {
-            /* Single travelling light effect for cards on mobile */
-            .flashlight-card::before {
-                 background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),
-                    rgba(255, 255, 255, 0.15),
-                    transparent 40%);
-            }
-            .flashlight-card.mobile-flashlight::before {
-                opacity: 1 !important;
-                transition: opacity 1s ease;
-            }
-
-            /* Continuous seamless marquee for footer */
-            .marquee-mobile-wrapper {
-                display: flex;
-                white-space: nowrap;
-                align-items: center;
-                width: max-content;
-                animation: marqueeMobile 30s linear infinite;
-                will-change: transform;
-            }
-        }
-
-        @keyframes marqueeMobile {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body class="antialiased selection:bg-wood-800 selection:text-white text-gray-900">
@@ -242,7 +67,7 @@
                         class="glass-effect border border-white/10 rounded-full px-2 py-2 w-full flex items-center justify-between shadow-2xl pointer-events-auto transition-transform hover:bg-black/60 relative">
                         <a href="#"
                             class="flex items-center justify-center bg-white/10 rounded-full p-2 h-10 w-10 shrink-0">
-                            <img src="logo%20casa%20madeira.png" alt="Logo"
+                            <img src="assets/images/logo%20casa%20madeira.png" alt="Logo"
                                 class="w-6 h-auto brightness-0 invert opacity-90 transition-opacity hover:opacity-100 object-contain">
                         </a>
 
@@ -324,7 +149,7 @@
                         
                         <!-- Thumbnail -->
                         <div class="relative w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-[1.25rem] overflow-hidden shrink-0 shadow-inner">
-                            <img src="textura%20mesa.png" alt="Mesa Thumbnail"
+                            <img src="assets/images/textura%20mesa.png" alt="Mesa Thumbnail"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                             <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:opacity-0"></div>
                         </div>
@@ -365,10 +190,10 @@
                     <div
                         class="w-full lg:w-1/2 relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-xl shadow-black/5 cursor-pointer bg-gray-50">
                         <!-- Imagem Preto e Branco (Ativa primeiro) -->
-                        <img src="desenho%20tecnico1%20preto-branco.png?v=2" alt="Desenho Técnico 1 P&B"
+                        <img src="assets/images/desenho%20tecnico1%20preto-branco.png?v=2" alt="Desenho Técnico 1 P&B"
                             class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100 group-hover:opacity-0">
                         <!-- Imagem Colorida (Surge no hover) -->
-                        <img src="desenho%20tecnico1.png?v=2" alt="Desenho Técnico 1 Colorido"
+                        <img src="assets/images/desenho%20tecnico1.png?v=2" alt="Desenho Técnico 1 Colorido"
                             class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0 group-hover:opacity-100">
                     </div>
                     <!-- Direita: Textos -->
@@ -397,10 +222,10 @@
                     <div
                         class="w-full lg:w-1/2 relative group rounded-[2.5rem] overflow-hidden aspect-[4/5] shadow-xl shadow-black/5 cursor-pointer bg-gray-50">
                         <!-- Imagem Preto e Branco -->
-                        <img src="desenho%20tecnico2%20preto-branco.png?v=2" alt="Desenho Técnico 2 P&B"
+                        <img src="assets/images/desenho%20tecnico2%20preto-branco.png?v=2" alt="Desenho Técnico 2 P&B"
                             class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100 group-hover:opacity-0">
                         <!-- Imagem Colorida -->
-                        <img src="desenho%20tecnico2.png?v=2" alt="Desenho Técnico 2 Colorido"
+                        <img src="assets/images/desenho%20tecnico2.png?v=2" alt="Desenho Técnico 2 Colorido"
                             class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0 group-hover:opacity-100">
                     </div>
                     <!-- Esquerda (Texto): Textos -->
@@ -510,7 +335,7 @@
                 <video id="origem-video"
                     class="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none" loop muted
                     playsinline disablePictureInPicture controlsList="nodownload noremoteplayback">
-                    <source src="video%20da%20arvore%20canela%20desktop.mp4" type="video/mp4">
+                    <source src="assets/videos/video%20da%20arvore%20canela%20desktop.mp4" type="video/mp4">
                 </video>
 
                 <!-- Gradient Overlay -->
@@ -552,7 +377,7 @@
                     <div class="galeria-item flex flex-col space-y-6 md:space-y-8">
                         <div
                             class="galeria-image-wrapper relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-gray-200 order-1">
-                            <img src="textura%20mesa.png" alt="Textura Canela Preta"
+                            <img src="assets/images/textura%20mesa.png" alt="Textura Canela Preta"
                                 class="galeria-img w-full h-full object-cover">
                         </div>
                         <div class="galeria-text space-y-4 pr-4 order-2">
@@ -568,7 +393,7 @@
                     <div class="galeria-item flex flex-col space-y-6 md:space-y-8">
                         <div
                             class="galeria-image-wrapper relative rounded-[2rem] overflow-hidden shadow-2xl bg-gray-200 order-1 md:order-2">
-                            <img src="mesa1.png" alt="Ambiente Sala de Jantar"
+                            <img src="assets/images/mesa1.png" alt="Ambiente Sala de Jantar"
                                 class="galeria-img w-full h-full object-cover">
                         </div>
                         <div class="galeria-text space-y-4 order-2 md:order-1">
@@ -584,7 +409,7 @@
                     <div class="galeria-item flex flex-col space-y-6 md:space-y-8">
                         <div
                             class="galeria-image-wrapper relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-gray-200 order-1">
-                            <img src="p%C3%A9%20da%20mesa.png" alt="Base Ripada Detalhe"
+                            <img src="assets/images/p%C3%A9%20da%20mesa.png" alt="Base Ripada Detalhe"
                                 class="galeria-img w-full h-full object-cover">
                         </div>
                         <div class="galeria-text space-y-4 pr-4 order-2">
@@ -620,7 +445,7 @@
                 <!-- Product Image -->
                 <div class="relative w-full mb-8 flex items-center justify-center">
                     <div class="relative inline-block w-full">
-                        <img src="mesa2.png" alt="Mesa Ágora" class="relative z-10 w-full h-auto object-contain rounded-[2rem] border-2 border-white/40">
+                        <img src="assets/images/mesa2.png" alt="Mesa Ágora" class="relative z-10 w-full h-auto object-contain rounded-[2rem] border-2 border-white/40">
                         <!-- Fading shadow under the table inside the image area -->
                         <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/60 blur-xl rounded-[100%] z-0"></div>
                     </div>
@@ -678,7 +503,7 @@
                 
                 <!-- Coluna 1: Logo & Slogan -->
                 <div class="lg:col-span-2 flex flex-col items-start">
-                    <img src="logo%20casa%20madeira.png" alt="Casa Madeira Logo" class="h-8 w-auto brightness-0 invert opacity-90 mb-6 object-contain">
+                    <img src="assets/images/logo%20casa%20madeira.png" alt="Casa Madeira Logo" class="h-8 w-auto brightness-0 invert opacity-90 mb-6 object-contain">
                     <p class="text-sm font-sans leading-relaxed max-w-sm text-gray-400">
                         O design orgânico elevado à arte. Uma peça única concebida para redefinir o centro das suas melhores memórias.
                     </p>
@@ -719,405 +544,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-
-            // 1. Initialize Lenis (High End Smooth Apple/Awwwards Scroll)
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                smooth: true,
-                smoothTouch: false,
-                touchMultiplier: 2,
-            });
-
-            // Connect Lenis to ScrollTrigger Native Match
-            lenis.on('scroll', ScrollTrigger.update);
-
-            gsap.ticker.add((time) => {
-                lenis.raf(time * 1000);
-            });
-            gsap.ticker.lagSmoothing(0);
-
-            // 2. Setup GSAP Plugins
-            gsap.registerPlugin(ScrollTrigger);
-
-            // 3. Setup Cool GSAP Entrance Animations
-            function playHeroEntrance() {
-                gsap.fromTo(".hero-fade-out",
-                    { y: "50px", autoAlpha: 0, filter: "blur(12px)" },
-                    { y: "0px", autoAlpha: 1, filter: "blur(0px)", duration: 1.5, stagger: 0.1, ease: "power2.out", overwrite: true }
-                );
-            }
-
-            const tlEntrance = gsap.timeline();
-            tlEntrance.to("#hero-box", {
-                autoAlpha: 1,
-                scale: 1,
-                duration: 1.8,
-                ease: "power3.out"
-            });
-            // Set initial scale for the box animation
-            gsap.set("#hero-box", { scale: 0.95 });
-
-            // Execute entrance automatically after box starts loading
-            setTimeout(() => playHeroEntrance(), 200);
-
-            // Create separated ScrollTrigger for the UI overlay elements
-            // so they exit gracefully and re-enter properly on scroll-back
-            ScrollTrigger.create({
-                trigger: "#hero-wrapper",
-                start: "top -50", // When user scrolls down 50px
-                onEnter: () => {
-                    gsap.to(".hero-fade-out", {
-                        y: "-80px",
-                        opacity: 0,
-                        filter: "blur(10px)",
-                        duration: 0.4,
-                        stagger: 0.04,
-                        ease: "power2.in",
-                        overwrite: true
-                    });
-                },
-                onLeaveBack: () => {
-                    // When scroll is perfectly at the top, replay entrance
-                    playHeroEntrance();
-                }
-            });
-
-            // 4. Parallax Scroll / Image Sequence Scrubbing (Apple Style Canvas)
-            const canvas = document.getElementById("hero-canvas");
-            const ctx = canvas.getContext("2d");
-
-            const frameCount = 240;
-            const currentFrame = index => (
-                `frames%20hero%20desktop/ezgif-6b902fd6eea368ac-jpg/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`
-            );
-
-            const images = [];
-            const frames = { frame: 0 };
-            let imagesLoaded = 0;
-
-            // Preload all frames
-            for (let i = 0; i < frameCount; i++) {
-                const img = new Image();
-                img.src = currentFrame(i);
-                images.push(img);
-
-                if (i === 0) {
-                    img.onload = () => {
-                        // Set canvas intrinsic size to match frame size
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        render(); // draw first frame immediately
-                    };
-                }
-            }
-
-            function render() {
-                const img = images[Math.round(frames.frame)];
-                if (img && img.complete) {
-                    // Clear and draw the frame
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                }
-            }
-
-            function setupCanvasScrub() {
-                const scrollDistance = 3500;
-
-                const tlScroll = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: "#hero-wrapper",
-                        start: "top top",
-                        end: `+=${scrollDistance}`,
-                        pin: true,
-                        scrub: 1.2, // 1.2s lag on scrub for buttery smooth trail effect
-                        anticipatePin: 1
-                    }
-                });
-
-                // a) Drive frame index via proxy
-                tlScroll.to(frames, {
-                    frame: frameCount - 1,
-                    snap: "frame", // ensure we hit integer frames
-                    ease: "none",
-                    onUpdate: render
-                }, 0);
-
-                // Eject logic is now handled by the separate ScrollTrigger onEnter
-
-                // Dim the gradient a bit more when scrolling to emphasize only the video art
-                tlScroll.to("#hero-box [class*='bg-gradient']", {
-                    opacity: 0.5,
-                    duration: 0.3
-                }, 0);
-            }
-
-            // Initialize Scrub
-            setupCanvasScrub();
-
-            // High custom smooth click anchors integrated w/ Lenis
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    lenis.scrollTo(this.getAttribute('href'), {
-                        duration: 1.5,
-                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-                    });
-                });
-            });
-
-            // 5. Quarta Dobra: Video Play/Pause & Text Parallax
-            const origemVideo = document.getElementById("origem-video");
-
-            ScrollTrigger.create({
-                trigger: "#origem",
-                start: "top bottom",
-                end: "bottom top",
-                onEnter: () => origemVideo.play(),
-                onEnterBack: () => origemVideo.play(),
-                onLeave: () => origemVideo.pause(),
-                onLeaveBack: () => origemVideo.pause()
-            });
-
-            gsap.to("#origem-content", {
-                y: "-50px", // Reduced from -150px to fit mobile screen without escaping view too fast
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "#origem",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-
-            // Mobile Menu Logic
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuBackdrop = document.getElementById('menu-backdrop');
-            let isMenuOpen = false;
-
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    isMenuOpen = !isMenuOpen;
-                    if (isMenuOpen) {
-                        mobileMenu.classList.remove('hidden');
-                        if(menuBackdrop) menuBackdrop.classList.remove('hidden');
-                        
-                        // Small delay to allow initial state before transition
-                        setTimeout(() => {
-                            mobileMenu.classList.remove('opacity-0', '-translate-y-4');
-                            mobileMenu.classList.add('opacity-100', 'translate-y-0');
-                            if(menuBackdrop) {
-                                menuBackdrop.classList.remove('opacity-0');
-                                menuBackdrop.classList.add('opacity-100');
-                            }
-                        }, 10);
-                    } else {
-                        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-                        mobileMenu.classList.add('opacity-0', '-translate-y-4');
-                        if(menuBackdrop) {
-                            menuBackdrop.classList.remove('opacity-100');
-                            menuBackdrop.classList.add('opacity-0');
-                        }
-                        
-                        setTimeout(() => {
-                            mobileMenu.classList.add('hidden');
-                            if(menuBackdrop) menuBackdrop.classList.add('hidden');
-                        }, 300);
-                    }
-                });
-
-                // Close menu when clicking a link
-                const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        isMenuOpen = false;
-                        mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-                        mobileMenu.classList.add('opacity-0', '-translate-y-4');
-                        if(menuBackdrop) {
-                            menuBackdrop.classList.remove('opacity-100');
-                            menuBackdrop.classList.add('opacity-0');
-                        }
-                        
-                        setTimeout(() => {
-                            mobileMenu.classList.add('hidden');
-                            if(menuBackdrop) menuBackdrop.classList.add('hidden');
-                        }, 300);
-                    });
-                });
-                
-                // Allow closing by clicking the backdrop
-                if(menuBackdrop) {
-                    menuBackdrop.addEventListener('click', () => {
-                        if(isMenuOpen) mobileMenuBtn.click();
-                    });
-                }
-            }
-
-            // 6. Quinta Dobra: Galeria Assinatura Reveal (Staggered Blur-in + Zoom-in)
-            const galeriaItems = document.querySelectorAll('.galeria-item');
-            let mm = gsap.matchMedia();
-
-            // Desktop: Staggered animation for the whole section
-            mm.add("(min-width: 769px)", () => {
-                const tlGaleria = gsap.timeline({ paused: true });
-                
-                ScrollTrigger.create({
-                    trigger: "#galeria",
-                    start: "top 70%",
-                    onEnter: () => tlGaleria.play()
-                });
-
-                ScrollTrigger.create({
-                    trigger: "#galeria",
-                    start: "top bottom",
-                    onLeaveBack: () => tlGaleria.pause(0) // Reset only when section leaves completely at the bottom
-                });
-
-                galeriaItems.forEach((item, index) => {
-                    const imgWrapper = item.querySelector('.galeria-image-wrapper');
-                    const text = item.querySelector('.galeria-text');
-
-                    tlGaleria.to(imgWrapper, {
-                        opacity: 1,
-                        filter: "blur(0px)",
-                        scale: 1,
-                        y: 0,
-                        duration: 1.8,
-                        ease: "power2.out"
-                    }, index * 0.4)
-                    .to(text, {
-                        opacity: 1,
-                        duration: 1,
-                        ease: "power2.out"
-                    }, (index * 0.4) + 0.8);
-                });
-            });
-
-            // Mobile: Individual animations triggered when each item comes into view
-            mm.add("(max-width: 768px)", () => {
-                galeriaItems.forEach((item) => {
-                    const imgWrapper = item.querySelector('.galeria-image-wrapper');
-                    const text = item.querySelector('.galeria-text');
-                    
-                    const tlItem = gsap.timeline({ paused: true });
-
-                    ScrollTrigger.create({
-                        trigger: item,
-                        start: "top 80%",
-                        onEnter: () => tlItem.play()
-                    });
-
-                    ScrollTrigger.create({
-                        trigger: item,
-                        start: "top bottom",
-                        onLeaveBack: () => tlItem.pause(0) // Reset only when item leaves completely at the bottom
-                    });
-
-                    tlItem.to(imgWrapper, {
-                        opacity: 1,
-                        filter: "blur(0px)",
-                        scale: 1,
-                        y: 0,
-                        duration: 1.8,
-                        ease: "power2.out"
-                    }, 0)
-                    .to(text, {
-                        opacity: 1,
-                        duration: 1,
-                        ease: "power2.out"
-                    }, 0.8);
-                });
-            });
-
-            // 7. Mobile Wandering Flashlight Effect for Cards
-            const diffSection = document.getElementById('diferenciais');
-            const flashCards = document.querySelectorAll('.flashlight-card');
-            let lightRafId;
-            let lightLocalX = 0;
-            let lightLocalY = 0;
-            let lightAngle = Math.PI / 2; // Moving straight down initially
-            let lightSpeed = 0.8; // Very smooth, constant velocity
-
-            function animateGlobalLight() {
-                if (window.innerWidth > 768) {
-                    flashCards.forEach(card => card.classList.remove('mobile-flashlight'));
-                    if (lightRafId) { cancelAnimationFrame(lightRafId); lightRafId = null; }
-                    return;
-                }
-
-                // Smoothly wander angle slightly every frame
-                lightAngle += (Math.random() - 0.5) * 0.04;
-
-                // Update position with constant smooth speed
-                lightLocalX += Math.cos(lightAngle) * lightSpeed;
-                lightLocalY += Math.sin(lightAngle) * lightSpeed;
-
-                const diffWidth = diffSection.offsetWidth;
-                const diffHeight = diffSection.offsetHeight;
-                const pad = 80; // Soft boundary padding
-
-                // Soft steering when approaching edges to keep it inside the section elegantly
-                let steerX = 0;
-                let steerY = 0;
-                if (lightLocalX < pad) steerX = 1;
-                else if (lightLocalX > diffWidth - pad) steerX = -1;
-                
-                if (lightLocalY < pad) steerY = 1;
-                else if (lightLocalY > diffHeight - pad) steerY = -1;
-
-                if (steerX !== 0 || steerY !== 0) {
-                    const centerAngle = Math.atan2((diffHeight / 2) - lightLocalY, (diffWidth / 2) - lightLocalX);
-                    // smoothly blend current angle towards centerAngle
-                    let angleDiff = centerAngle - lightAngle;
-                    // normalize angleDiff to -PI to PI
-                    while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
-                    while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
-                    lightAngle += angleDiff * 0.02;
-                }
-
-                const diffRect = diffSection.getBoundingClientRect();
-                const globalLightViewportX = diffRect.left + lightLocalX;
-                const globalLightViewportY = diffRect.top + lightLocalY;
-
-                flashCards.forEach(card => {
-                    card.classList.add('mobile-flashlight');
-                    const rect = card.getBoundingClientRect();
-                    const cardX = globalLightViewportX - rect.left;
-                    const cardY = globalLightViewportY - rect.top;
-                    card.style.setProperty('--mouse-x', `${cardX}px`);
-                    card.style.setProperty('--mouse-y', `${cardY}px`);
-                });
-
-                lightRafId = requestAnimationFrame(animateGlobalLight);
-            }
-
-            setTimeout(() => {
-                if (window.innerWidth <= 768 && diffSection && flashCards.length > 0) {
-                    // Começa no topo absoluto (centro)
-                    lightLocalX = diffSection.offsetWidth / 2;
-                    lightLocalY = 0;
-                    lightAngle = Math.PI / 2; // Apontando para baixo
-                    animateGlobalLight();
-                }
-            }, 500);
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768) {
-                    if (!lightRafId && diffSection && flashCards.length > 0) animateGlobalLight();
-                } else {
-                    if (lightRafId) { cancelAnimationFrame(lightRafId); lightRafId = null; }
-                    flashCards.forEach(card => card.classList.remove('mobile-flashlight'));
-                }
-            });
-
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

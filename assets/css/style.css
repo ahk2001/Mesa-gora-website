@@ -1,0 +1,174 @@
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+
+        .font-manrope {
+            font-family: 'Manrope', sans-serif !important;
+        }
+
+        /* Gallery Initial State for JS Reveal */
+        .galeria-item .galeria-image-wrapper {
+            opacity: 0;
+            filter: blur(20px);
+            transform: scale(1.1) translateY(-50px);
+            will-change: transform, filter, opacity;
+        }
+
+        .galeria-item .galeria-text {
+            opacity: 0;
+            will-change: opacity;
+        }
+
+
+        /* Custom UI Glass Effect clone from design system */
+        .glass-effect {
+            background: rgba(15, 17, 21, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .will-change-transform {
+            will-change: transform, opacity, filter;
+        }
+
+        /* Flashlight Card Effect */
+        .flashlight-card {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .flashlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0px;
+            background: radial-gradient(550px circle at var(--mouse-x) var(--mouse-y),
+                    rgba(255, 255, 255, 0.12),
+                    transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .flashlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Lenis CSS Fixes for true smooth scrolling */
+        html.lenis,
+        html.lenis-smooth {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-smooth iframe {
+            pointer-events: none;
+        }
+        /* Animated Rotating Border Glow */
+        .glowing-border-card {
+            position: relative;
+            border-radius: 2rem; /* 32px */
+            overflow: hidden;
+            z-index: 1; /* Ensure its context is contained */
+        }
+        .glowing-border-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                transparent 30%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 70%,
+                transparent 100%
+            );
+            animation: rotate-glow 4s linear infinite;
+            z-index: -2;
+            pointer-events: none;
+        }
+        /* Inner mask to hide the center of the conic gradient, leaving only the border */
+        .glowing-border-card::after {
+            content: '';
+            position: absolute;
+            inset: 1px; /* Border thickness */
+            border-radius: calc(2rem - 1px);
+            background: rgba(15, 17, 21, 0.7); /* Deep dark glass */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            z-index: -1;
+            pointer-events: none;
+        }
+        @keyframes rotate-glow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        /* Shimmer Effect for Footer Typographic Background */
+        .shimmer-text {
+            background: linear-gradient(
+                120deg,
+                rgba(255, 255, 255, 0.04) 0%,
+                rgba(255, 255, 255, 0.04) 40%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.04) 60%,
+                rgba(255, 255, 255, 0.04) 100%
+            );
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 8s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Hero Initial States to prevent flickering (FOUC) */
+        #hero-box, .hero-fade-out {
+            opacity: 0;
+            visibility: hidden;
+            will-change: transform, opacity, filter;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            /* Single travelling light effect for cards on mobile */
+            .flashlight-card::before {
+                 background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),
+                    rgba(255, 255, 255, 0.15),
+                    transparent 40%);
+            }
+            .flashlight-card.mobile-flashlight::before {
+                opacity: 1 !important;
+                transition: opacity 1s ease;
+            }
+
+            /* Continuous seamless marquee for footer */
+            .marquee-mobile-wrapper {
+                display: flex;
+                white-space: nowrap;
+                align-items: center;
+                width: max-content;
+                animation: marqueeMobile 30s linear infinite;
+                will-change: transform;
+            }
+        }
+
+        @keyframes marqueeMobile {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }

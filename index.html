@@ -59,7 +59,9 @@
                 class="relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-deep-dark shadow-[0_30px_80px_rgba(0,0,0,0.3)] will-change-transform">
 
                 <!-- Menu Backdrop for blurring the site when Mobile Menu is open -->
-                <div id="menu-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-md z-[50] hidden opacity-0 transition-opacity duration-300 pointer-events-auto"></div>
+                <div id="menu-backdrop"
+                    class="absolute inset-0 bg-black/60 backdrop-blur-md z-[50] hidden opacity-0 transition-opacity duration-300 pointer-events-auto">
+                </div>
 
                 <!-- OVERLAPPING NAVBAR / Menu Superior (Movido para dentro) -->
                 <div
@@ -86,23 +88,32 @@
                             Falar com atendente
                         </a>
 
-                        <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center bg-white rounded-full p-2 h-10 w-10 shrink-0 text-black shadow-lg transition-transform hover:scale-110 active:scale-90">
+                        <button id="mobile-menu-btn"
+                            class="md:hidden flex items-center justify-center bg-white rounded-full p-2 h-10 w-10 shrink-0 text-black shadow-lg transition-transform hover:scale-110 active:scale-90">
                             <iconify-icon icon="lucide:menu" class="text-xl"></iconify-icon>
                         </button>
                     </header>
 
                     <!-- Mobile Menu Overlay -->
-                    <div id="mobile-menu" class="hidden absolute top-full mt-4 left-0 w-full glass-effect border border-white/10 rounded-[2rem] p-6 flex flex-col gap-6 shadow-2xl z-[150] opacity-0 transition-all duration-300 transform -translate-y-4 pointer-events-auto">
+                    <div id="mobile-menu"
+                        class="hidden absolute top-full mt-4 left-0 w-full glass-effect border border-white/10 rounded-[2rem] p-6 flex flex-col gap-6 shadow-2xl z-[150] opacity-0 transition-all duration-300 transform -translate-y-4 pointer-events-auto">
                         <nav class="flex flex-col gap-1 text-base font-sans font-medium text-white/90 text-center">
-                            <a href="#hero-wrapper" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">A Obra</a>
-                            <a href="#detalhes" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">Detalhes</a>
-                            <a href="#diferenciais" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">Diferenciais</a>
-                            <a href="#origem" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">A Origem</a>
-                            <a href="#galeria" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">Galeria</a>
-                            <a href="#comprar" class="mobile-link py-3.5 hover:text-wood-800 transition-colors border-b border-white/5 pb-6">Comprar</a>
+                            <a href="#hero-wrapper" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">A
+                                Obra</a>
+                            <a href="#detalhes"
+                                class="mobile-link py-3.5 hover:text-wood-800 transition-colors">Detalhes</a>
+                            <a href="#diferenciais"
+                                class="mobile-link py-3.5 hover:text-wood-800 transition-colors">Diferenciais</a>
+                            <a href="#origem" class="mobile-link py-3.5 hover:text-wood-800 transition-colors">A
+                                Origem</a>
+                            <a href="#galeria"
+                                class="mobile-link py-3.5 hover:text-wood-800 transition-colors">Galeria</a>
+                            <a href="#comprar"
+                                class="mobile-link py-3.5 hover:text-wood-800 transition-colors border-b border-white/5 pb-6">Comprar</a>
                         </nav>
                         <div class="w-full flex justify-center mt-2">
-                            <a href="#comprar" class="mobile-link bg-white text-black px-9 py-3.5 rounded-full text-base font-sans font-medium text-center hover:bg-wood-50 transition-all active:scale-95 shadow-xl w-fit">
+                            <a href="#comprar"
+                                class="mobile-link bg-white text-black px-9 py-3.5 rounded-full text-base font-sans font-medium text-center hover:bg-wood-50 transition-all active:scale-95 shadow-xl w-fit">
                                 Falar com atendente
                             </a>
                         </div>
@@ -136,7 +147,8 @@
                             Onde a robustez da madeira <br class="hidden md:block" /> encontra a elegancia do design.
                         </h1>
 
-                        <p class="mt-4 md:mt-6 text-[15px] md:text-lg text-white/70 leading-relaxed font-sans drop-shadow-lg max-w-2xl">
+                        <p
+                            class="mt-4 md:mt-6 text-[15px] md:text-lg text-white/70 leading-relaxed font-sans drop-shadow-lg max-w-2xl">
                             Uma obra-prima em madeira maciça. Com contornos orgânicos e uma imponente base ripada, cada
                             veio da Canela Preta conta uma história desenhada para gerações.
                         </p>
@@ -144,20 +156,25 @@
                 </div>
 
                 <!-- BOTTOM PURCHASE CTA CARD (Centralized on Mobile, Right on Desktop) -->
-                <div class="absolute bottom-6 left-6 right-6 md:auto md:left-auto md:-translate-x-0 md:bottom-12 md:right-12 z-20 hero-fade-out will-change-transform flex justify-center md:justify-end">
+                <div
+                    class="absolute bottom-6 left-6 right-6 md:auto md:left-auto md:-translate-x-0 md:bottom-12 md:right-12 z-20 hero-fade-out will-change-transform flex justify-center md:justify-end">
                     <a href="#comprar"
                         class="glass-effect border border-white/10 rounded-2xl md:rounded-3xl p-2.5 md:p-3 flex gap-3 md:gap-4 items-center shadow-2xl group hover:bg-white/[0.08] transition-all duration-500 overflow-hidden cursor-pointer w-fit max-w-[340px] md:max-w-[400px]">
-                        
+
                         <!-- Thumbnail -->
-                        <div class="relative w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-[1.25rem] overflow-hidden shrink-0 shadow-inner">
+                        <div
+                            class="relative w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-[1.25rem] overflow-hidden shrink-0 shadow-inner">
                             <img src="assets/images/textura%20mesa.png" alt="Mesa Thumbnail"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                             <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:opacity-0"></div>
                         </div>
 
                         <div class="flex-1 pr-1 md:pr-2">
-                            <h4 class="text-white font-manrope font-medium text-base md:text-lg leading-tight tracking-tight whitespace-nowrap">Mesa Ágora</h4>
-                            <p class="text-wood-800 font-sans text-[8px] md:text-[10px] uppercase font-bold tracking-widest mt-1.5 md:mt-2 whitespace-nowrap">
+                            <h4
+                                class="text-white font-manrope font-medium text-base md:text-lg leading-tight tracking-tight whitespace-nowrap">
+                                Mesa Ágora</h4>
+                            <p
+                                class="text-wood-800 font-sans text-[8px] md:text-[10px] uppercase font-bold tracking-widest mt-1.5 md:mt-2 whitespace-nowrap">
                                 Fabricação Exclusiva</p>
                         </div>
 
@@ -233,18 +250,17 @@
                     <div class="w-full lg:w-1/2 flex flex-col items-start text-left">
                         <span
                             class="text-xs text-wood-900 font-mono tracking-[0.2em] uppercase font-bold mb-6 flex items-center gap-3">
-                            <span class="w-8 h-px bg-wood-900"></span> ENGENHARIA DO LUXO
+                            <span class="w-8 h-px bg-wood-900"></span> FLUIDEZ E PRESENÇA
                         </span>
                         <h2
                             class="text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-[1.05] font-manrope font-medium tracking-tighter mb-6 text-balance">
-                            O rigor arquitetônico <br /> por trás do orgânico.
+                            A beleza de ter <br /> uma arte particular.
                         </h2>
                         <p class="text-lg text-gray-600 leading-relaxed font-sans max-w-xl">
-                            A assimetria perfeita não nasce do acaso, ela é milimetricamente calculada. Onde os olhos
-                            veem apenas fluidez poética, reside a mais pura precisão estrutural. Cada raio de curvatura
-                            e o distanciamento exato da base foram desenhados para garantir estabilidade absoluta e uma
-                            proporção visual perfeita. É o casamento definitivo entre o brutalismo da madeira e o rigor
-                            do design autoral.
+                            Eleve o padrão do seu espaço. A ausência de cantos vivos cria uma dinâmica envolvente, onde
+                            cada lugar oferece uma perspectiva única da peça. É o equilíbrio exato entre o impacto
+                            visual que a sua casa pede e a sofisticação de uma verdadeira instalação de arte no centro
+                            da sala.
                         </p>
                     </div>
                 </div>
@@ -428,46 +444,60 @@
         </section>
 
         <!-- SEXTA DOBRA: O CONVITE FINAL (CTA) -->
-        <section id="comprar" class="relative min-h-screen w-full bg-[#050505] flex items-center justify-center py-16 md:py-32 px-6 rounded-t-[2.5rem] mt-[-2.5rem] z-40 border-t border-white/5 overflow-hidden">
-            
+        <section id="comprar"
+            class="relative min-h-screen w-full bg-[#050505] flex items-center justify-center py-16 md:py-32 px-6 rounded-t-[2.5rem] mt-[-2.5rem] z-40 border-t border-white/5 overflow-hidden">
+
             <!-- Minimalist Glow Background -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="w-[150vw] md:w-[600px] h-[150vw] md:h-[600px] bg-wood-800/20 rounded-full blur-[120px] opacity-30"></div>
+                <div
+                    class="w-[150vw] md:w-[600px] h-[150vw] md:h-[600px] bg-wood-800/20 rounded-full blur-[120px] opacity-30">
+                </div>
             </div>
 
             <!-- Central Card (Glassmorphism + Animated Glowing Border) -->
-            <div class="glowing-border-card w-full max-w-lg md:max-w-xl p-8 md:p-12 flex flex-col items-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                
+            <div
+                class="glowing-border-card w-full max-w-lg md:max-w-xl p-8 md:p-12 flex flex-col items-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+
                 <!-- Moved "Garanta a sua" Text -->
                 <div class="w-full relative z-10 flex flex-col items-center mb-6">
-                    <span class="text-[10px] text-wood-800 font-mono tracking-[0.2em] uppercase font-bold text-center">Garanta a sua</span>
+                    <span
+                        class="text-[10px] text-wood-800 font-mono tracking-[0.2em] uppercase font-bold text-center">Garanta
+                        a sua</span>
                 </div>
 
                 <!-- Product Image -->
                 <div class="relative w-full mb-8 flex items-center justify-center">
                     <div class="relative inline-block w-full">
-                        <img src="assets/images/mesa2.png" alt="Mesa Ágora" class="relative z-10 w-full h-auto object-contain rounded-[2rem] border-2 border-white/40">
+                        <img src="assets/images/mesa2.png" alt="Mesa Ágora"
+                            class="relative z-10 w-full h-auto object-contain rounded-[2rem] border-2 border-white/40">
                         <!-- Fading shadow under the table inside the image area -->
-                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/60 blur-xl rounded-[100%] z-0"></div>
+                        <div
+                            class="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/60 blur-xl rounded-[100%] z-0">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Text Block -->
                 <div class="mb-10 w-full relative z-10 flex flex-col items-center">
-                    <h2 class="text-2xl md:text-3xl text-gray-300 font-sans font-normal tracking-widest mb-1 md:mb-2">Mesa Ágora</h2>
-                    <p class="text-5xl md:text-7xl text-wood-800 font-manrope font-black tracking-tighter pt-2 flex items-start justify-center gap-1 leading-none">
+                    <h2 class="text-2xl md:text-3xl text-gray-300 font-sans font-normal tracking-widest mb-1 md:mb-2">
+                        Mesa Ágora</h2>
+                    <p
+                        class="text-5xl md:text-7xl text-wood-800 font-manrope font-black tracking-tighter pt-2 flex items-start justify-center gap-1 leading-none">
                         <span class="text-3xl md:text-4xl font-bold mt-1.5 md:mt-3">R$</span> 8.500
                     </p>
-                    <p class="text-xs md:text-sm text-white font-sans font-medium tracking-wide mt-0 md:-mt-1">em até 12x no cartão</p>
+                    <p class="text-xs md:text-sm text-white font-sans font-medium tracking-wide mt-0 md:-mt-1">em até
+                        12x no cartão</p>
                 </div>
 
                 <!-- Buttons Group -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-4 w-full relative z-10">
-                    <a href="#" class="w-full md:max-w-[180px] py-3 px-4 rounded-full border border-white/20 text-white/90 text-xs font-sans font-medium hover:bg-white/10 hover:text-white transition-colors flex items-center justify-center gap-2">
+                    <a href="#"
+                        class="w-full md:max-w-[180px] py-3 px-4 rounded-full border border-white/20 text-white/90 text-xs font-sans font-medium hover:bg-white/10 hover:text-white transition-colors flex items-center justify-center gap-2">
                         <iconify-icon icon="lucide:message-circle"></iconify-icon>
                         Falar com atendente
                     </a>
-                    <a href="#" class="w-full md:flex-1 py-4 px-8 rounded-full bg-wood-800 text-white text-base md:text-lg font-sans font-bold hover:bg-wood-700 transition-colors shadow-lg hover:shadow-wood-800/30 flex items-center justify-center gap-2">
+                    <a href="#"
+                        class="w-full md:flex-1 py-4 px-8 rounded-full bg-wood-800 text-white text-base md:text-lg font-sans font-bold hover:bg-wood-700 transition-colors shadow-lg hover:shadow-wood-800/30 flex items-center justify-center gap-2">
                         <iconify-icon icon="lucide:shopping-bag"></iconify-icon>
                         Comprar
                     </a>
@@ -479,21 +509,27 @@
 
     <!-- SETIMA DOBRA: FOOTER PREMIUM -->
     <footer class="relative w-full bg-[#050505] pt-16 md:pt-32 pb-8 overflow-hidden z-40">
-        
+
         <!-- 1. Background Typographic / Shimmer -->
-        <div class="absolute inset-0 flex items-center justify-start md:justify-center pointer-events-none select-none z-0 overflow-hidden w-full">
+        <div
+            class="absolute inset-0 flex items-center justify-start md:justify-center pointer-events-none select-none z-0 overflow-hidden w-full">
             <div class="hidden md:flex w-full items-center justify-center">
-                <span class="text-[18vw] font-manrope font-black tracking-tighter uppercase whitespace-nowrap shimmer-text">
+                <span
+                    class="text-[18vw] font-manrope font-black tracking-tighter uppercase whitespace-nowrap shimmer-text">
                     Mesa Ágora
                 </span>
             </div>
             <!-- Seamless Mobile Marquee -->
             <div class="flex md:hidden marquee-mobile-wrapper">
-                <span class="text-[340px] font-manrope font-black tracking-tighter uppercase whitespace-nowrap shimmer-text leading-[1.0] flex items-center">
-                    MESA ÁGORA <span class="inline-block w-[120px]"></span> MESA ÁGORA <span class="inline-block w-[120px]"></span>
+                <span
+                    class="text-[340px] font-manrope font-black tracking-tighter uppercase whitespace-nowrap shimmer-text leading-[1.0] flex items-center">
+                    MESA ÁGORA <span class="inline-block w-[120px]"></span> MESA ÁGORA <span
+                        class="inline-block w-[120px]"></span>
                 </span>
-                <span class="text-[340px] font-manrope font-black tracking-tighter uppercase whitespace-nowrap shimmer-text leading-[1.0] flex items-center">
-                    MESA ÁGORA <span class="inline-block w-[120px]"></span> MESA ÁGORA <span class="inline-block w-[120px]"></span>
+                <span
+                    class="text-[340px] font-manrope font-black tracking-tighter uppercase whitespace-nowrap shimmer-text leading-[1.0] flex items-center">
+                    MESA ÁGORA <span class="inline-block w-[120px]"></span> MESA ÁGORA <span
+                        class="inline-block w-[120px]"></span>
                 </span>
             </div>
         </div>
@@ -501,21 +537,26 @@
         <!-- 2. Foreground Content Layer -->
         <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
-                
+
                 <!-- Coluna 1: Logo & Slogan -->
                 <div class="lg:col-span-2 flex flex-col items-start">
-                    <img src="assets/images/logo%20casa%20madeira.png" alt="Casa Madeira Logo" class="h-8 w-auto brightness-0 invert opacity-90 mb-6 object-contain">
+                    <img src="assets/images/logo%20casa%20madeira.png" alt="Casa Madeira Logo"
+                        class="h-8 w-auto brightness-0 invert opacity-90 mb-6 object-contain">
                     <p class="text-sm font-sans leading-relaxed max-w-sm text-gray-400">
-                        O design orgânico elevado à arte. Uma peça única concebida para redefinir o centro das suas melhores memórias.
+                        O design orgânico elevado à arte. Uma peça única concebida para redefinir o centro das suas
+                        melhores memórias.
                     </p>
                 </div>
 
                 <!-- Coluna 2: Atendimento -->
                 <div class="flex flex-col space-y-5">
-                    <h4 class="text-white font-manrope font-semibold tracking-wide uppercase text-xs">Atendimento Exclusivo</h4>
+                    <h4 class="text-white font-manrope font-semibold tracking-wide uppercase text-xs">Atendimento
+                        Exclusivo</h4>
                     <ul class="space-y-3 text-sm font-sans text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors duration-300">Falar com o Curador</a></li>
-                        <li><a href="mailto:contato@casamadeira.com" class="hover:text-white transition-colors duration-300">E-mail</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Falar com o Curador</a>
+                        </li>
+                        <li><a href="mailto:contato@casamadeira.com"
+                                class="hover:text-white transition-colors duration-300">E-mail</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-300">Instagram</a></li>
                     </ul>
                 </div>
@@ -524,16 +565,20 @@
                 <div class="flex flex-col space-y-5">
                     <h4 class="text-white font-manrope font-semibold tracking-wide uppercase text-xs">Legal</h4>
                     <ul class="space-y-3 text-sm font-sans text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors duration-300">Garantia e Cuidados</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-300">Termos de Aquisição</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-300">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Garantia e Cuidados</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Termos de Aquisição</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-300">Política de
+                                Privacidade</a></li>
                     </ul>
                 </div>
 
             </div>
 
             <!-- Bottom Bar -->
-            <div class="pt-8 border-t border-white/10 flex flex-col items-center md:items-start text-[10px] md:text-xs font-sans text-gray-500 uppercase tracking-wider">
+            <div
+                class="pt-8 border-t border-white/10 flex flex-col items-center md:items-start text-[10px] md:text-xs font-sans text-gray-500 uppercase tracking-wider">
                 <p>© 2026 Casa Madeira. Todos os direitos reservados.</p>
             </div>
         </div>

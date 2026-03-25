@@ -40,8 +40,23 @@
             // Set initial scale for the box animation
             gsap.set("#hero-box", { scale: 0.95 });
 
-            // Execute entrance automatically after box starts loading
-            setTimeout(() => playHeroEntrance(), 200);
+            // Handle the initial state based on scroll position
+            // Hide immediately if loaded past the top to avoid appearing out of place.
+            if (window.scrollY >= 50) {
+                gsap.set(".hero-fade-out", {
+                    y: "-80px",
+                    autoAlpha: 0,
+                    filter: "blur(10px)",
+                    overwrite: true
+                });
+            }
+
+            // Execute entrance automatically after box starts loading ONLY if at the top
+            setTimeout(() => {
+                if (window.scrollY < 50) {
+                    playHeroEntrance();
+                }
+            }, 200);
 
             // Create separated ScrollTrigger for the UI overlay elements
             // so they exit gracefully and re-enter properly on scroll-back

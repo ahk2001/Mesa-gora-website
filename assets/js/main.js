@@ -94,24 +94,30 @@
             let imagesLoaded = 0;
 
             // Preload all frames
+            let canvasInitialized = false;
             for (let i = 0; i < frameCount; i++) {
                 const img = new Image();
                 img.src = currentFrame(i);
                 images.push(img);
 
-                if (i === 0) {
-                    img.onload = () => {
-                        // Set canvas intrinsic size to match frame size
+                img.onload = () => {
+                    if (!canvasInitialized) {
+                        // Set canvas intrinsic size to match frame size on the first loaded frame
                         canvas.width = img.width;
                         canvas.height = img.height;
-                        render(); // draw first frame immediately
-                    };
-                }
+                        canvasInitialized = true;
+                    }
+                    
+                    // If this newly loaded image happens to be the one we need right now, render it immediately
+                    if (i === Math.round(frames.frame)) {
+                        render();
+                    }
+                };
             }
 
             function render() {
                 const img = images[Math.round(frames.frame)];
-                if (img && img.complete) {
+                if (img && img.complete && canvas.width > 0) {
                     // Clear and draw the frame
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
